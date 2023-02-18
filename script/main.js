@@ -47,8 +47,15 @@ function handleDrop(e) {
 	console.log('dropped something on me');
 	// bug fix #1 should go here, and it's at most 3 lines of JS code
 
+	// check if the drop zone already has a puzzle piece
+    if (this.children.length > 0) {
+        return;
+    }
+
 	// this line is going to move the dragged piece from the left side of the board
 	// into whatever drop zone we choose. appendChild means "add element to the container"
+	// it stops you from being able to drag another piece onto another if there's 
+	// already a piece on the drop zone
 	this.appendChild(draggedPiece);
 }
 // step 2
