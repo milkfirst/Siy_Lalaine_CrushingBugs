@@ -25,7 +25,14 @@ function changeBGImage() {
 	// and updating the background-image style of the puzzle board element.
 
 	// bug fix #2 should go here. it's at most 3 lines of JS code.
-	puzzleBoard.style.backgroundImage = `url(images/backGround${this.id}.jpg)`;
+	// reparent puzzle pieces back to the drag zone
+	puzzlePieces.forEach(piece => {
+		piece.parentNode.removeChild(piece);
+		puzzleBoard.appendChild(piece);
+ 	});
+  
+  // update the background image
+  puzzleBoard.style.backgroundImage = `url(images/backGround${this.id}.jpg)`;
 }
 
 function handleStartDrag() { 
